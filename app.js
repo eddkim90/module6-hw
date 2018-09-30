@@ -7,6 +7,7 @@
     function LunchCheckController($scope) {
 
         var outputMessage = "";
+        var colorSelect = "red";
 
         $scope.checkFunction = function() {
             var entry = $scope.lunchItems;
@@ -30,10 +31,13 @@
                 // Output the necessary message
                 if (outExistingItems.length >= 1 && outExistingItems.length <= 3) {
                     outputMessage = "Enjoy!";
+                    colorSelect = "green";
                 } else if (outExistingItems.length > 3) {
                     outputMessage = "Too Much!";
+                    colorSelect = "green";
                 } else if (outExistingItems.length === 0) {
                     outputMessage = "Please Enter Data First...";
+                    colorSelect = "red";
                 }
             }
         };
@@ -41,7 +45,12 @@
         // Output Message Function
         $scope.sayMessage = function() {
             return outputMessage;
-        }
+        };
+
+        // Color Select Function
+        $scope.colorSelect = function() {
+            return colorSelect;
+        };
     }
 
 })();
