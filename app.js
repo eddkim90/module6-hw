@@ -7,7 +7,7 @@
     function LunchCheckController($scope) {
 
         var outputMessage = "";
-        var colorSelect = "red";
+        var reportStatus = "";
 
         $scope.checkFunction = function() {
             var entry = $scope.lunchItems;
@@ -15,6 +15,7 @@
             // First time with no typing will be null or undefined.
             if (entry === null || entry === undefined) {
                 outputMessage = "Please Enter Data First...";
+                reportStatus = "error";
             } else {
                 var splitArr = entry.split(',');
 
@@ -31,13 +32,13 @@
                 // Output the necessary message
                 if (outExistingItems.length >= 1 && outExistingItems.length <= 3) {
                     outputMessage = "Enjoy!";
-                    colorSelect = "green";
+                    reportStatus = "success";
                 } else if (outExistingItems.length > 3) {
                     outputMessage = "Too Much!";
-                    colorSelect = "green";
+                    reportStatus = "success";
                 } else if (outExistingItems.length === 0) {
                     outputMessage = "Please Enter Data First...";
-                    colorSelect = "red";
+                    reportStatus = "error";
                 }
             }
         };
@@ -48,8 +49,8 @@
         };
 
         // Color Select Function
-        $scope.colorSelect = function() {
-            return colorSelect;
+        $scope.reportStatus = function() {
+            return reportStatus;
         };
     }
 
